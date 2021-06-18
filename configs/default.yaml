@@ -1,0 +1,127 @@
+data:
+  data_dir: /is/cluster/work/jyang/data/scanimation/miniCAPE
+  smpl_dir: ./smplx/models
+  smpl_gender: male
+  num_sample_surf: 5000
+  num_sample_scan_igr: 5000
+  num_sample_smpl_igr: 5000
+  num_sample_bbox_igr: 2000
+  num_sample_edge: 5000
+  sigma_body: 0.1
+experiment:
+  name: example
+  debug: false
+  log_dir: /is/cluster/work/jyang/experiments/scanimation/runs
+  result_dir: /is/cluster/work/jyang/experiments/scanimation/results
+  ckpt_dir: /is/cluster/work/jyang/experiments/scanimation/checkpoints
+  ckpt_file: 
+  vol_res: 256
+  netG_file:
+  netC_file:
+training:
+  num_threads: 1
+  serial_batch: false
+  pin_memory: false
+  batch_size: 2
+  skip_pt1: false
+  skip_pt2: false
+  end2end: false
+  num_epoch_pt1: 100
+  num_epoch_pt2: 500
+  num_epoch_sdf: 4000
+  lr_pt1: 0.004
+  lr_pt2: 0.004
+  lr_sdf: 0.004
+  freq_plot: 10
+  freq_save: 500
+  freq_mesh: 1000
+  num_interp: 10
+  resume_epoch: -1
+  use_pretrain: false
+  continue_train: false
+  finetune: false
+  no_gen_mesh: false
+  no_num_eval: false
+  num_eval_sample: 400
+  num_eval_mesh: 5
+test:
+  test_folder_path: /is/cluster/work/jyang/experiments/scanimation/test
+model:
+  bps_res_c: 16
+  bps_res_p: 32
+  posemap_type: both
+  n_traverse: 4
+  normalize_posemap: true
+  id_type: subject
+  sdf_net:
+    lambda_sdf: 1.0
+    lambda_nml: 1.0
+    lambda_reg: 0.1
+    lambda_bbox: 10.0
+    lambda_pmap: 1.0
+    lambda_lat: 0.01
+    pose_dim: 4
+    g_dim: 64
+    learn_posemap: false
+    use_embed: true
+    d_size: 5
+    n_bound: 500
+    nml_scale: 0.1
+    mlp:
+      ch_dim:
+        - 7
+        - 512
+        - 512
+        - 343
+        - 512
+        - 1
+      res_layers:
+        - 3
+      nlactiv: softplus
+      norm: weight
+      last_op: null
+  lbs_net_c:
+    lambda_smpl: 10.0
+    lambda_scan: 1.0
+    lambda_cyc_scan: 0.1
+    lambda_cyc_smpl: 0.0
+    lambda_lat: 0.01
+    lambda_edge: 0.1
+    use_embed: true
+    d_size: 6
+    g_dim: 0
+    mlp:
+      ch_dim:
+        - 7
+        - 256
+        - 256
+        - 256
+        - 24
+      res_layers:
+        - 2
+      nlactiv: leakyrelu
+      norm: none
+      last_op: softmax
+  lbs_net_p:
+    lambda_smpl: 10.0
+    lambda_scan: 1.0
+    lambda_lat: 0.01
+    lambda_l_edge: 0.0
+    lambda_w_edge: 0.1
+    lambda_sparse: 0.001
+    use_embed: true
+    d_size: 8
+    g_dim: 64
+    p_val: 0.8
+    mlp:
+      ch_dim:
+        - 8
+        - 256
+        - 256
+        - 256
+        - 24
+      res_layers:
+        - 2
+      nlactiv: leakyrelu
+      norm: none
+      last_op: softmax

@@ -1,0 +1,8 @@
+1. Setup virtual environment:
+Go to the scanimate directory in the command line, then
+$ source ./install.sh
+If you use other python and cuda versions (default python3.6 cuda 10.1), please change the cuda version and python version in ./install.sh
+
+2. Download the smpl model:
+Download smpl models from https://smpl.is.tue.mpg.de/, put them into models folder under ./scanimate/smpl/models
+By default we use 10 PCA models and .pkl format.

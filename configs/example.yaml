@@ -1,0 +1,114 @@
+data:
+  data_dir: ./data/train/example_03375_shortlong # Training data directory
+  num_sample_bbox_igr: 2000 # Number of sample points in the bounding box
+  num_sample_edge: 5000
+  num_sample_scan_igr: 5000 
+  num_sample_smpl_igr: 5000 # num_sample_scan_igr+num_sample_smpl_igr: number of sample points around the surface
+  num_sample_surf: 8000 # Number of sample points on the clothing surface
+  sigma_body: 0.05 # Standard deviation controlling the sample points around the surface
+  smpl_dir: ./smpl/models # The directory containing 10 PCA .pkl SMPL model
+  smpl_gender: male
+  test_dir: ./data/train/example_03375_shortlong # Test data directory, by default it is the same as training dir. Test directory should be additionally specified when run apps.test_scanimate
+  train_ratio: 1.0 # Using different portion of training data.
+experiment:
+  ckpt_dir: ./demo_result/checkpoints # Where to save checkpoints and final trained models
+  log_dir: ./demo_result/runs # Where to save intermediate results
+  name: example # Experiment name
+  result_dir: ./demo_result/results # Where to save the results
+  vol_res: 256 # Voxel resolution for marching cube reconstruction
+model:
+  fwd_skin_net:
+    d_size: 4 # Degree of positional encoding
+    g_dim: 0 # Dimension of global latent code
+    lambda_cyc_scan: 0.1
+    lambda_cyc_smpl: 0.0
+    lambda_edge: 0.1
+    lambda_lat: 0.01
+    lambda_scan: 1.0
+    lambda_smpl: 10.0
+    mlp:
+      ch_dim:
+      - 3
+      - 256
+      - 256
+      - 256
+      - 24
+      last_op: softmax
+      nlactiv: leakyrelu
+      norm: none
+      res_layers:
+      - 2
+    use_embed: true # Use positional encoding
+  igr_net:
+    d_size: 4 # Degree of positional encoding
+    g_dim: 64 # Dimension of global latent code
+    lambda_bbox: 1.0
+    lambda_lat: 1.0
+    lambda_nml: 1.0
+    lambda_non_zero: 0.1
+    lambda_pmap: 1.0
+    lambda_reg: 1.0
+    lambda_sdf: 1.0
+    learn_posemap: false
+    mlp:
+      ch_dim:
+      - 3
+      - 512
+      - 512
+      - 512
+      - 343
+      - 512
+      - 512
+      - 1
+      last_op: null
+      nlactiv: softplus
+      norm: weight
+      res_layers:
+      - 4
+    n_bound: 500
+    pose_dim: 4 # N ring neighbouring joints will be considered as pose condition
+    use_embed: true # Use positional encoding
+  inv_skin_net:
+    d_size: 4 # Degree of positional encoding
+    g_dim: 64 # Dimension of global latent code
+    lambda_l_edge: 0.0
+    lambda_lat: 0.01
+    lambda_scan: 1.0
+    lambda_smpl: 10.0
+    lambda_sparse: 0.001
+    lambda_w_edge: 0.1
+    mlp:
+      ch_dim:
+      - 3
+      - 256
+      - 256
+      - 256
+      - 24
+      last_op: softmax
+      nlactiv: leakyrelu
+      norm: none
+      res_layers:
+      - 2
+    p_val: 0.8
+    use_embed: true # Use positional encoding
+  n_traverse: 4
+  normalize_posemap: true
+  posemap_type: both
+training:
+  batch_size: 4
+  continue_train: true
+  freq_mesh: 10000 # Output intermediate mesh results for every N iterations
+  freq_plot: 100 # Output training information for every N iterations
+  freq_save: 5000 # Save checkpoints for every N iterations
+  lr_pt1: 0.004 # Learning rates
+  lr_pt2: 0.001
+  lr_sdf: 0.004
+  num_epoch_pt1: 200 # Epoches
+  num_epoch_pt2: 200
+  num_epoch_sdf: 1000
+  num_threads: 8
+  pin_memory: false
+  resample_every_n_epoch: 1 # Actively resample points at every Nth epoch
+  skip_pt1: false
+  skip_pt2: false
+  use_trained_skin_nets: false # If continue_train is true and ckpt_skin_net.pth exists, the code will skip training skin_nets automatically.
