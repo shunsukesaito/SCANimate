@@ -4,9 +4,7 @@
 
 This repository contains the official PyTorch implementation of:
 
-**SCANimate: Weakly Supervised Learning of Skinned Clothed Avatar Networks**
-
-[Full paper](https://arxiv.org/pdf/2104.03313.pdf) | [5min Presentation](https://youtu.be/EeNFvmNuuog) | [Video](https://youtu.be/ohavL55Oznw) | [Project website](https://scanimate.is.tue.mpg.de/) | [Poster](https://scanimate.is.tue.mpg.de/media/upload/poster/CVPR_poster_SCANimate.pdf)
+**SCANimate: Weakly Supervised Learning of Skinned Clothed Avatar Networks** <br>*Shunsuke Saito, Jinlong Yang, Qianli Ma, and Michael J. Black* <br>[Full paper](https://arxiv.org/pdf/2104.03313.pdf) | [5min Presentation](https://youtu.be/EeNFvmNuuog) | [Video](https://youtu.be/ohavL55Oznw) | [Project website](https://scanimate.is.tue.mpg.de/) | [Poster](https://scanimate.is.tue.mpg.de/media/upload/poster/CVPR_poster_SCANimate.pdf)
 
 ![](teaser/aist_0.gif)
 
@@ -79,6 +77,18 @@ Then, change the `./configs/example.yaml` to point to your data directory and yo
 Software Copyright License for non-commercial scientific research purposes. Please read carefully the terms and conditions and any accompanying documentation before you download and/or use the SCANimate code, including the scripts, animation demos, pre-trained neural network model parameters and the pre-trained animatable avatars ("Scanimats"). By downloading and/or using the Model & Software (including downloading, cloning, installing, and any other use of this GitHub repository), you acknowledge that you have read these terms and conditions, understand them, and agree to be bound by them. If you do not agree with these terms and conditions, you must not download and/or use the Model & Software. Any infringement of the terms of this agreement will automatically terminate your rights under this License.
 
 The provided demo data (including the body pose, raw scans and mesh registrations of clothed human bodies) are subject to the license of the [CAPE Dataset](https://cape.is.tue.mpg.de/).
+
+## Related Research
+**[SCALE: Modeling Clothed Humans with a Surface Codec of Articulated Local Elements (CVPR 2021)](https://qianlim.github.io/SCALE)**<br>
+*Qianli Ma, Shunsuke Saito, Jinlong Yang, Siyu Tang, Michael J. Black*
+
+Modeling pose-dependent shapes of clothed humans *explicitly* with hundreds of articulated surface elements: the clothing deforms naturally even in the presence of topological change!
+
+**[Learning to Dress 3D People in Generative Clothing (CVPR 2020)](https://qianlim.github.io/SCALE)**<br>
+*Qianli Ma, Jinlong Yang, Anurag Ranjan, Sergi Pujades, Gerard Pons-Moll, Siyu Tang, Michael J. Black*
+
+CAPE --- a generative model and a large-scale dataset for 3D clothed human meshes in varied poses and garment types. 
+We trained SCANimate using the [CAPE dataset](https://cape.is.tue.mpg.de/dataset), check it out!
 
 
 ## Citations
