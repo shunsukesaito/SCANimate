@@ -84,7 +84,7 @@ The provided demo data (including the body pose, raw scans and mesh registration
 
 Modeling pose-dependent shapes of clothed humans *explicitly* with hundreds of articulated surface elements: the clothing deforms naturally even in the presence of topological change!
 
-**[Learning to Dress 3D People in Generative Clothing (CVPR 2020)](https://qianlim.github.io/SCALE)**<br>
+**[Learning to Dress 3D People in Generative Clothing (CVPR 2020)](https://cape.is.tue.mpg.de/)**<br>
 *Qianli Ma, Jinlong Yang, Anurag Ranjan, Sergi Pujades, Gerard Pons-Moll, Siyu Tang, Michael J. Black*
 
 CAPE --- a generative model and a large-scale dataset for 3D clothed human meshes in varied poses and garment types. 
