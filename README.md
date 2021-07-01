@@ -70,7 +70,7 @@ The results can be found under `./demo_result/results/example`.
 
 **3. Train on your own data**
 Make your data the same structure as in the `./data/train/example_03375_shortlong`, where a `.ply` file contains a T-pose SMPL body mesh and a folder containing training frames.
-Each frame corresponds to two files: one `.npz` files containing SMPL parameters that describes the body and one `.ply` file containing the clothed scan. The body should align with the scan.
+Each frame corresponds to two files: one `.npz` files containing SMPL parameters that describes the pose of the body (i.e. only 'transl' and 'pose' matters) and one `.ply` file containing the clothed scan. The body should align with the scan.
 Then, change the `./configs/example.yaml` to point to your data directory and you are good to go!
 
 ## License
