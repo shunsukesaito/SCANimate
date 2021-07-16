@@ -105,7 +105,7 @@ training:
   lr_sdf: 0.004
   num_epoch_pt1: 200 # Epoches
   num_epoch_pt2: 200
-  num_epoch_sdf: 1000
+  num_epoch_sdf: 20000
   num_threads: 8
   pin_memory: false
   resample_every_n_epoch: 1 # Actively resample points at every Nth epoch
