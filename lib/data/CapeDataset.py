@@ -57,7 +57,6 @@ def filter_smpl_pose(pose, clip_value = 0.1):
 
 def load_trimesh(ply_files, ground_level = None):
     meshs = {}
-    ground_level = (0, -0.562, 0)
     logging.info("In total there are "+str(len(ply_files))+" frames.")
     logging.info(ply_files[0].split('/')[-2].split('_')[0])
     key_name = ply_files[0].split('/')[-2].split('_')[0] + '_' + ply_files[0].split('/')[-1]
